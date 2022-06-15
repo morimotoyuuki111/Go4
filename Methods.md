@@ -5,3 +5,23 @@ Goには、クラス( class )のしくみはありませんが、型にメソッ
 レシーバは、 func キーワードとメソッド名の間に自身の引数リストで表現します。<br>
 この例では、 Abs メソッドは v という名前の Vertex 型のレシーバを持つことを意味しています。<br>
 
+```go
+package main
+
+import (
+  "fmt"
+  "math"
+)
+
+type Vertex struct {
+    X,Y float64
+}
+
+func (v Vertex) abs() float64 {
+  return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func main() {
+    v := Venrtex{3. 4}
+    fmt.Println(v.abs())
+}
