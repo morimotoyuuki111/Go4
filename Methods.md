@@ -18,7 +18,7 @@ type Vertex struct { //type Vertex（構造体の名前） struct
 }
 
 func (v Vertex) abs() float64 {　
-  return math.Sqrt(v.X*v.X + v.Y*v.Y)
+  return math.Sqrt(v.X*v.X + v.Y*v.Y) //math.Sqrt(v.X*v.X + v.Y*v.Y)が出てく
 }
 
 func main() {
