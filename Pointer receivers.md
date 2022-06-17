@@ -25,7 +25,7 @@ type Vertex struct {　//構造体　
 	X, Y float64　//各変数　float64は小数点を入れる変数
 }
 
-func (v Vertex) Abs() float64 {　　
+func (v Vertex) Abs() float64 {　　　　//(v Vertex)が構造体vのレシーバー　float64が戻り値の型
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
