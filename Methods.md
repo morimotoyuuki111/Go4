@@ -6,23 +6,29 @@ Goには、クラス( class )のしくみはありませんが、型にメソッ
 この例では、 Abs メソッドは v という名前の Vertex 型のレシーバを持つことを意味しています。<br>
 
 ```go
-package main　//パッケージを宣言
+package main //パッケージを宣言
 
-import (　//fmtパッケージ　mathパッケージを宣言
-  "fmt"
-  "math"
+import (　//fmtパッケージをインポート
+	"fmt"
 )
 
-type Vertex struct { //type Vertex（構造体の名前） struct
-    X,Y float64 //各変数　　float64は小数点を入れる変数
+// 構造体Human(人)を定義
+type Human struct {
+	Name string // 名前
+	Age  int    // 年齢
 }
 
-func (v Vertex) abs() float64 {　
-  return math.Sqrt(v.X*v.X + v.Y*v.Y) //math.Sqrt(v.X*v.X + v.Y*v.Y)が出てく
+// Human構造体から挨拶文を作成します。
+func (h Human) Hello() string {　
+	return fmt.Sprintf("こんにちは！%sは%d歳です", h.Name, h.Age)
 }
 
 func main() {
-    v := Venrtex{3. 4}
-    fmt.Println(v.abs())
+	taro := Human{　//　変数taroにHuman{　Name: "Taro",Age:  20,}が入る
+		Name: "Taro",
+		Age:  20,
+	}
+
+	fmt.Println(taro.Hello()) // こんにちは！Taroは20歳です
 }
 ```
