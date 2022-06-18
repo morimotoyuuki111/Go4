@@ -13,34 +13,52 @@ Scale の宣言(line 16)から * を消し、プログラムの振る舞いが�
 変数レシーバでは、 Scale メソッドの操作は元の Vertex 変数のコピーを操作します。 （これは関数の引数としての振るまいと同じです）。 つまり main 関数で宣言した Vertex 変数を変更するためには、Scale メソッドはポインタレシーバにする必要があるのです。<br>
 
 
+# Pointer receivers
+
+ポインタレシーバでメソッドを宣言できます。
+
+これはレシーバの型が、ある型 T への構文 *T があることを意味します。 （なお、 T は *int のようなポインタ自身を取ることはできません）
+
+例では *Vertex に Scale メソッドが定義されています。
+
+ポインタレシーバを持つメソッド(ここでは Scale )は、レシーバが指す変数を変更できます。 レシーバ自身を更新することが多いため、変数レシーバよりもポインタレシーバの方が一般的です。
+
+Scale の宣言(line 16)から * を消し、プログラムの振る舞いがどう変わるのかを確認してみましょう。
+
+変数レシーバでは、 Scale メソッドの操作は元の Vertex 変数のコピーを操作します。 （これは関数の引数としての振るまいと同じです）。 つまり main 関数で宣言した Vertex 変数を変更するためには、Scale メソッドはポインタレシーバにする必要があるのです。<br>
+
 ```go
 package main //パッケージを宣言
 
-import (　
-	"fmt"　//fmtパッケージをインポート
-	"math"　//mathパッケージをインポート
-)
+import "fmt"　//fmtパッケージをインポート
 
-type Vertex struct {　//構造体　
-	X, Y float64　//各変数　float64は小数点を入れる変数
+type person struct {　//type 構造体の名前 struct
+	name string  //フィールド　データ型１　　
+	age  int　    //フィールド　データ型２　
 }
 
-func (v Vertex) Abs() float64 {　　　　//(v Vertex)が構造体vのレシーバー　float64が戻り値の型
-	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+func (p person) hello() { 　//pを使って構造体のフィールドを使うことができる (p person)がレシーバ　(変数　型)　hello()が関数
+	fmt.Printf("%s (%d)\n", p.name, p.age)
 }
 
-func (v *Vertex) Scale(f float64) {
-	v.X = v.X * f
-	v.Y = v.Y * f
+func (p *person) increment() {　//(p *person)がポインタで渡されている　アドレスを格納するための変数が用意されてるのがポインタ
+	p.age++
 }
 
-func main() {
-	v := Vertex{3, 4}
-	v.Scale(10)
-	fmt.Println(v.Abs())
+func main() { //
+	p := person{
+		name: "John",
+		age:  30,
+	}
+	p.hello() // John (30) //hello関数を呼び出している
+	p.increment()　　//increment関数を呼び出している
+	p.hello() // John (31)　//increment関数を呼び出した後もう一度hello関数を呼び出しているためageが一つ増えて３１になる
 }
-
-出力結果
-５０
-
 ```
+
+- 関数の引数に参照渡しと値渡しがあるのと同様に、レシーバにも参照渡しと値渡しがあります。<br>参照渡しのレシーバを特に ポインタレシーバ (pointer receiver)、値渡しのレシーバーをバリューレシーバ(value receiver) といいます。<br>
+
+- インクリメント（英：increment）とは<br>
+　今の数字に1を足すこと<br>
+ 
+関数はどこからでも呼び出せる
