@@ -13,18 +13,18 @@ import (　//fmtパッケージをインポート
 )
 
 // 構造体Human(人)を定義
-type Human struct {
-	Name string // 名前
-	Age  int    // 年齢
+type Human struct {　
+	Name string // 名前　//フィールドを定義
+	Age  int    // 年齢　//フィールドを定義
 }
 
 // Human構造体から挨拶文を作成します。
-func (h Human) Hello() string {　
+func (h Human) Hello() string {　　//hを使って構造体のフィールドを使うことができる
 	return fmt.Sprintf("こんにちは！%sは%d歳です", h.Name, h.Age)
 }
 
 func main() {
-	taro := Human{　//　変数taroにHuman{　Name: "Taro",Age:  20,}が入る
+	taro := Human{　//　変数taroにHuman{　Name: "Taro",Age:  20,}が初期化されて入る
 		Name: "Taro",
 		Age:  20,
 	}
@@ -32,3 +32,14 @@ func main() {
 	fmt.Println(taro.Hello()) // こんにちは！Taroは20歳です
 }
 ```
+
+- メソッド
+構造体などの特定の型に関連づけられた関数
+
+```go
+func (h Human) Hello() string {　　//hを使って構造体のフィールドを使うことができる
+	return fmt.Sprintf("こんにちは！%sは%d歳です", h.Name, h.Age)
+```
+
+(h Human)の使い方は変数名.フィールド名　サンプルコード
+(h Human)はレシーバと呼ぶ
