@@ -26,15 +26,13 @@ func ptf(a *int) {　//ptf関数　。　　 (a *int) aが変数　*intがint型
 
 func main() {
 
-    var x = 100 //varは定義　変数xを定義
+    var x = 100 //varは定義　変数xを定義　xに１００が入ってる
 
        fmt.Printf("The value of x before function call is: %d\n",x)
     
-    // taking a pointer variable *int
-    // and assigning the address 
-     var pa *int = &x　 //
+     var pa *int = &x　 //var pa *intを定義　　&x=xのアドレス　　x=１００
 
-     ptf(pa)
+     ptf(pa)　//paの中に書き換えた７４８が入る
 
      fmt.Printf("The value of x before function call is: %d\n",x)
 }
