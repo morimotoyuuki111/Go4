@@ -28,25 +28,28 @@ type Vertex struct {　構造体　 Vertexは構造体の名前
 	X, Y float64　//変数　　float64　は小数点を入れる変数
 }
 
-func (v *Vertex) Scale(f float64) {　//vが変数　*ポインタで渡されている　アドレスを格納するための変数が用意されてる状態？　Scale関数　fが変数　float64型
+func (v *Vertex) Scale(f float64) {　//*Vertexに対してメソッドを定義する　*Vertexが渡されてる
 	v.X = v.X * f　
 	v.Y = v.Y * f
 }
 
-func ScaleFunc(v *Vertex, f float64) {　 //　ScaleFunc関数　
+func ScaleFunc(v *Vertex, f float64) {　 //　メソッドをScaleFunc関数に書き直してる　
 	v.X = v.X * f
 	v.Y = v.Y * f
 }
 
 func main() {
-	v := Vertex{3, 4}
-	v.Scale(2)
-	ScaleFunc(&v, 10)
+	v := Vertex{3, 4}　
+	v.Scale(2)//２をかける
+	ScaleFunc(&v, 10)　　//&vはv := Vertex{3, 4}　に入って３０＊２　４０＊２ため{60 80}となる
 
-	p := &Vertex{4, 3}
-	p.Scale(3)
-	ScaleFunc(p, 8)
+	p := &Vertex{4, 3}　//4*8 4*3
+	p.Scale(3)//をかける
+	ScaleFunc(p, 8)//pに&Vertex{4, 3}が入っている　 32*3 24*3のため&{96 72}となる
 
 	fmt.Println(v, p)
 }
+
+出力結果
+{60 80} &{96 72}
 ```
