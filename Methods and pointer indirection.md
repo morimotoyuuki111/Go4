@@ -24,7 +24,7 @@ package main //パッケージメイン
 
 import "fmt"　//fmtパッケージをインポート
 
-type Vertex struct {　構造体　 Vertexは構造体の名前
+type Vertex struct {　//構造体　 Vertexは構造体の名前
 	X, Y float64　//変数　　float64　は小数点を入れる変数
 }
 
