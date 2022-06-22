@@ -63,6 +63,18 @@ var d map[int]string
 
 ```
 
+- メソッド<br>
+<a href="">メソッドまとめ</a><br>
+
+```go
+// 型そのもの
+func (p Point) Length() float64 {
+```
+```go
+// ポインタ型
+func (p *Point) Length() float64 {
+```
+
 - ポインタ
 Go では変数に & を付けることで、その変数のメモリ上のアドレスを取得可能
 変数のアドレスを取り出す & はアドレス演算子
