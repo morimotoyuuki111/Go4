@@ -43,3 +43,4 @@ func main() {
 出力結果
 Before scaling: &{X:3 Y:4}, Sum: 7
 After scaling: &{X:15 Y:20}, Sum: 35
+```
