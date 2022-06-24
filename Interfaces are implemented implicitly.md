@@ -8,7 +8,7 @@ package main //パッケージを宣言
 
 import "fmt"　//fmtパッケージをインポート
 　　
-type I interface {　　インターフェースを定義　Iが型名
+type I interface {　　//インターフェースを定義　Iが型名
     M()　//メソッドM？
 }
 
