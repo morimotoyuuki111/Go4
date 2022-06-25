@@ -29,13 +29,13 @@ type T struct {　//構造体　Tは構造体の名前
 // This method means type T implements the interface I,
 // but we don't need to explicitly declare that it does so.
 // declare that it does so.
-func (t *T) M() {　
+func (t *T) M() {　 
     fmt.Println(t.S)
 }
 
-type F float64  
+type F float64  //構造体？　メソッド？
 
-func (f F) M() {
+func (f F) M() {　
     fmt.Println(f)
 }
 
@@ -43,11 +43,11 @@ func main() {
 	var i I　 //i Iを定義
 
 	i = &T{"Hello"} //iに&T{"Hello"}が代入される
-	describe(i) 
-	i.M()　// (&{Hello}
+	describe(i) //なぜ*main.T？
+	i.M()　// (&{Hello} 
 
 	i = F(math.Pi) //Piは円周率
-	describe(i)
+	describe(i)　//なぜmain.F
 	i.M() // 
 }
 
@@ -58,7 +58,7 @@ func describe(i I) {
 出力結果
 (&{Hello}, *main.T)
 Hello
-(3.141592653589793, main.F)
+(3.141592653589793, cmain.F)
 3.141592653589793
 
 ```
