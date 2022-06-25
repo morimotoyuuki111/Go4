@@ -33,7 +33,7 @@ func (t *T) M() {　
     fmt.Println(t.S)
 }
 
-type F float64  //構造体？　メソッド？
+type F float64  //数値型
 
 func (f F) M() {　
     fmt.Println(f)
@@ -62,3 +62,4 @@ Hello
 3.141592653589793
 
 ```
+
