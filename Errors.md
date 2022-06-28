@@ -15,7 +15,7 @@ type error interface {
 
 
 ```go
-i, err := strconv.Atoi("42")
+i, err := strconv.Atoi("42")　
 if err != nil {
     fmt.Printf("couldn't convert number: %v\n", err)
     return
@@ -41,15 +41,15 @@ func (e *MyError) Error() string {　//*MyError型が渡されてる　Error()�
 	return fmt.Sprintf("at %v, %s",　e.When, e.What) //String()関数を終了
 }
 
-func run() error {
-	return &MyError{
-		time.Now(),
-		"it didn't work",
+func run() error {　　//run()関数　error型
+	return &MyError{ //&MyError関数を終了
+		time.Now(),//今の時間
+		"it didn't work",　
 	}
 }
 
-func main() {
-	if err := run(); err != nil {
+func main() {　//この下が分かりません
+	if err := run(); err != nil { 
 		fmt.Println(err)
 	}
 }
