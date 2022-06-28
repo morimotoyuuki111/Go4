@@ -25,21 +25,20 @@ fmt.Println("Converted integer:", i)
 nil の error は成功したことを示し、 nilではない error は失敗したことを示します。<br>
 
 ```go
-package main
+package main //パッケージを宣言
 
-import (
+import (　//fmtパッケージをインポート　timeパッケージをインポート
 	"fmt"
 	"time"
 )
 
-type MyError struct {
-	When time.Time
-	What string
+type MyError struct { //構造体　　MyError構造体の名前
+	When time.Time　//When　itme フィールド　 Time型
+	What string　//What フィールド　　string型
 }
 
-func (e *MyError) Error() string {
-	return fmt.Sprintf("at %v, %s",
-		e.When, e.What)
+func (e *MyError) Error() string {　//*MyError型が渡されてる　Error()メソッドを定義　string型
+	return fmt.Sprintf("at %v, %s",　e.When, e.What) //String()関数を終了
 }
 
 func run() error {
